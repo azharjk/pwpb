@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PerjalananController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use App\Models\Biodata;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -62,13 +63,15 @@ Route::post('/register', [AuthController::class, 'register'])->name('auth.regist
 
 Route::get('/dashboard', [PerjalananController::class, 'index'])->name('perjalanan.dashboard');
 
+Route::get('/users', [UserController::class, 'index'])->name('users.index');
+
 Route::get('/input-peduli-diri', [PerjalananController::class, 'inputDataPerjalanan']);
 
 Route::post('/simpan-perjalanan', [PerjalananController::class, 'simpanPerjalanan']);
 
 Route::get('/dashboard/input-data', function () {
     return view('pages.dashboard-input');
-});
+})->name('perjalanan.input-data');
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Biodata;
+use Illuminate\Support\Facades\Auth;
+
 use App\Models\Perjalanan;
 use Illuminate\Http\Request;
 
 class PerjalananController extends Controller
 {
     public function index() {
-        $bio = new Biodata();
-        return view('pages.dashboard', ['biodata' => $bio->biodata]);
+        // $perjalanan = Auth::user()->hasMany(Perjalanan::class, 'id_user', 'id')->get();
+        $perjalanan = Perjalanan::all();
+        return view('pages.dashboard', ['perjalanan' => $perjalanan]);
     }
 
     public function inputDataPerjalanan() {
@@ -19,12 +21,13 @@ class PerjalananController extends Controller
 
     public function simpanPerjalanan(Request $request) {
         $data = [
-            'id_user' => $request['id-user'],
+            'id_user' => Auth::user()->id,
             'tanggal' => $request['tanggal'],
             'lokasi_yang_dikunjungi' => $request['lokasi-yang-dikunjungi'],
-            'suhu' => $request['suhu-tubuh']
+            'suhu' => $request['suhu']
         ];
 
         Perjalanan::create($data);
+        return redirect()->route('perjalanan.input-data');
     }
 }

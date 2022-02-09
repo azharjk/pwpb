@@ -1,33 +1,31 @@
 @extends('master')
 
-@section('title', 'Dashboard')
+@section('title', 'Users')
 
 @section('content')
     <div class="card">
         <div class="card-header flex justify-content-between">
-            <h4>Data Email</h4>
-            <a class="btn btn-primary" href="/dashboard/input-data">Insert</a>
+            <h4>Data Users</h4>
+            {{-- <a class="btn btn-primary" href="/dashboard/input-data">Insert</a> --}}
         </div>
         <div class="card-body">
             <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Tanggal</th>
-                        <th scope="col">Lokasi</th>
-                        <th scope="col">Suhu</th>
+                        <th scope="col">Nama lengkap</th>
+                        <th scope="col">NIK</th>
                     </tr>
                 </thead>
                 <tbody>
                     @php
-                        $i = 1
+                        $i = 1;
                     @endphp
-                    @foreach ($perjalanan as $p)
+                    @foreach ($users as $u)
                         <tr>
                             <th scope="row">{{ $i++ }}</th>
-                            <td>{{ $p['tanggal'] }}</td>
-                            <td>{{ $p['lokasi_yang_dikunjungi'] }}</td>
-                            <td>{{ $p['suhu'] }}</td>
+                            <td>{{ $u['name'] }}</td>
+                            <td>{{ $u['password'] }}</td>
                         </tr>
                     @endforeach
                 </tbody>

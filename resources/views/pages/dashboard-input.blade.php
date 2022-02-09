@@ -12,42 +12,19 @@
             <div class="col-12 col-md-6 col-lg-6">
                 <div class="card">
                     <div class="card-body">
-                        <form action="/dashboard/input-data/post" method="POST">
+                        <form action="/simpan-perjalanan" method="POST">
                             @csrf
                             <div class="form-group">
                                 <label for="nama">Tanggal</label>
-                                <input id="nama" name="nama" type="text" class="form-control">
+                                <input id="nama" name="tanggal" type="date" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="nis">NIS</label>
-                                <input id="nis" name="nis" type="number" class="form-control">
+                                <label for="nis">Lokasi</label>
+                                <input id="nis" name="lokasi-yang-dikunjungi" type="text" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="jurusan">Jurusan</label>
-                                <select id="jurusan" name="jurusan" class="form-control">
-                                    <option>Pilih Jurusan</option>
-                                    <option>RPL</option>
-                                    <option>TKJ</option>
-                                    <option>MM</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="kelas">Kelas</label>
-                                <select id="kelas" name="kelas" class="form-control">
-                                    <option>Pilih Kelas</option>
-                                    <option>10</option>
-                                    <option>11</option>
-                                    <option>12</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="wali-kelas">Wali Kelas</label>
-                                <select id="wali-kelas" name="wali-kelas" class="form-control">
-                                    <option>Pilih Wali Kelas</option>
-                                    <option>Bu Pratiwi</option>
-                                    <option>Bu Mayati</option>
-                                    <option>Pak Asur</option>
-                                </select>
+                                <label for="suhu">Suhu</label>
+                                <input id="suhu" name="suhu" type="number" class="form-control">
                             </div>
                             <button class="btn btn-primary" type="submit">Submit</button>
                         </form>
