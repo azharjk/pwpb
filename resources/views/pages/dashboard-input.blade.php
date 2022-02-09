@@ -15,7 +15,7 @@
                         <form action="/dashboard/input-data/post" method="POST">
                             @csrf
                             <div class="form-group">
-                                <label for="nama">Nama</label>
+                                <label for="nama">Tanggal</label>
                                 <input id="nama" name="nama" type="text" class="form-control">
                             </div>
                             <div class="form-group">

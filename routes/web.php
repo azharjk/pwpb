@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PerjalananController;
+use App\Http\Controllers\AuthController;
 use App\Models\Biodata;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -46,13 +48,30 @@ Route::get('/experiment', function () {
     return view('master');
 });
 
-Route::get('/dashboard', function () use($bio) {
-    return view('pages.dashboard', ['biodata' => $bio->biodata]);
-});
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+Route::get('/login', function() {
+    return view('auth.login');
+})->name('auth.login');
+
+Route::get('/register', function() {
+    return view('auth.register');
+})->name('auth.register');
+
+Route::post('/register', [AuthController::class, 'register'])->name('auth.register.user');
+
+Route::get('/dashboard', [PerjalananController::class, 'index'])->name('perjalanan.dashboard');
+
+Route::get('/input-peduli-diri', [PerjalananController::class, 'inputDataPerjalanan']);
+
+Route::post('/simpan-perjalanan', [PerjalananController::class, 'simpanPerjalanan']);
 
 Route::get('/dashboard/input-data', function () {
     return view('pages.dashboard-input');
 });
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
 Route::post('/dashboard/input-data/post', function (Request $request) use($bio) {
     $biodata_new = $request->all(['nama', 'nis', 'jurusan', 'kelas', 'wali-kelas']);
     $biodata_new['wali_kelas'] = $biodata_new['wali-kelas'];
